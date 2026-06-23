@@ -1253,75 +1253,148 @@
        MAYORISTA SECTION
     ══════════════════════════════════════ */
     .mayorista-section {
-      background: linear-gradient(135deg, #2a0f04 0%, var(--brown) 60%, #1a0a02 100%);
+      background: linear-gradient(135deg, #1e0a01 0%, #3a1508 55%, #2a0f04 100%);
       color: #fff;
     }
 
-    .mayorista-inner {
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto;
+    .cat-chip-mayor {
+      background: var(--yellow);
+      color: var(--brown);
+      border-color: var(--yellow);
+      font-weight: 900;
+    }
+    .cat-chip-mayor:hover,
+    .cat-chip-mayor.active {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
     }
 
-    .mayorista-sub {
-      color: rgba(255,255,255,.82);
+    .mayorista-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .mayorista-eyebrow {
+      display: inline-block;
+      background: rgba(255,208,0,.15);
+      border: 1.5px solid rgba(255,208,0,.35);
+      color: var(--yellow);
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: .8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+
+    .mayorista-title {
+      font-family: var(--font-head);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .mayorista-accent { color: var(--yellow); }
+
+    .mayorista-desc {
+      color: rgba(255,255,255,.8);
       font-size: 1rem;
       line-height: 1.75;
-      max-width: 580px;
-      margin: 0 auto 32px;
+      margin-bottom: 28px;
+    }
+
+    .mayorista-tipos {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tipo-badge {
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: .82rem;
+      padding: 8px 18px;
+      border-radius: 50px;
+    }
+
+    .tipo-may {
+      background: var(--yellow);
+      color: var(--brown);
+    }
+
+    .tipo-min {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,.4);
+      color: rgba(255,255,255,.9);
+    }
+
+    .mayorista-ask {
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: .85rem;
+      color: rgba(255,255,255,.6);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
     }
 
     .mayorista-ocasiones {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 36px;
+      gap: 8px;
+      margin-bottom: 28px;
     }
 
     .ocasion-chip {
-      background: rgba(255,208,0,.12);
-      border: 1.5px solid rgba(255,208,0,.35);
+      background: rgba(255,208,0,.1);
+      border: 1.5px solid rgba(255,208,0,.3);
       color: var(--yellow);
       font-family: var(--font-body);
       font-weight: 700;
-      font-size: .82rem;
-      padding: 8px 16px;
+      font-size: .8rem;
+      padding: 7px 14px;
       border-radius: 50px;
-      letter-spacing: .3px;
     }
 
-    .mayorista-benefits {
+    .mayorista-perks {
       display: flex;
-      gap: 28px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
     }
 
-    .mayorista-benefit {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .perk-item {
       font-family: var(--font-body);
       font-weight: 700;
-      font-size: .9rem;
-      color: rgba(255,255,255,.88);
+      font-size: .92rem;
+      color: rgba(255,255,255,.85);
     }
-
-    .benefit-icon { font-size: 1.3rem; }
 
     .mayorista-wa {
       font-size: 1.05rem;
-      padding: 16px 32px;
+      padding: 16px 28px;
+      width: 100%;
+      justify-content: center;
     }
 
     /* ══════════════════════════════════════
        RESPONSIVE — TABLET (≤ 900px)
     ══════════════════════════════════════ */
     @media (max-width: 900px) {
-      .combos-grid { grid-template-columns: repeat(2, 1fr); }
-      .cumple-grid  { grid-template-columns: repeat(2, 1fr); }
+      .combos-grid    { grid-template-columns: repeat(2, 1fr); }
+      .cumple-grid    { grid-template-columns: repeat(2, 1fr); }
+      .mayorista-wrap { grid-template-columns: 1fr; gap: 32px; }
+      .mayorista-tipos { justify-content: center; }
+      .mayorista-copy { text-align: center; }
+      .mayorista-ocasiones { justify-content: center; }
+      .mayorista-ask { text-align: center; }
+      .mayorista-perks { align-items: center; }
     }
 
     /* ══════════════════════════════════════
@@ -1528,6 +1601,7 @@
 <!-- ══════════════ CAT NAV ══════════════ -->
 <nav id="cat-nav" aria-label="Categorías">
   <div class="cat-chips">
+    <button class="cat-chip cat-chip-mayor" data-target="mayorista"  onclick="goTo('#mayorista')">🏭 Mayorista</button>
     <button class="cat-chip" data-target="productos"   onclick="goTo('#productos')">🛒 Productos</button>
     <button class="cat-chip" data-target="promos-pan"  onclick="goTo('#promos-pan')">🎁 Promos con Pan</button>
     <button class="cat-chip" data-target="combos"      onclick="goTo('#combos')">📦 Combos</button>
@@ -1537,6 +1611,50 @@
 </nav>
 
 
+
+<!-- ══════════════ MAYORISTA ══════════════ -->
+<section id="mayorista" class="section mayorista-section">
+  <div class="container">
+    <div class="mayorista-wrap fade-up">
+
+      <div class="mayorista-copy">
+        <div class="mayorista-eyebrow">🏭 Distribuidora Mayorista · Pilar</div>
+        <h2 class="mayorista-title">Precios<br><span class="mayorista-accent">Mayoristas</span></h2>
+        <p class="mayorista-desc">
+          Somos distribuidores de productos para fiestas y eventos. Comprás tanto al por mayor
+          como al por menor — sin complicaciones. Contanos tu evento y te armamos una
+          cotización a medida en minutos.
+        </p>
+        <div class="mayorista-tipos">
+          <span class="tipo-badge tipo-may">📦 Venta Mayorista</span>
+          <span class="tipo-badge tipo-min">🛒 Venta Minorista</span>
+        </div>
+      </div>
+
+      <div class="mayorista-action">
+        <p class="mayorista-ask">¿Para qué evento necesitás precio?</p>
+        <div class="mayorista-ocasiones">
+          <span class="ocasion-chip">🎂 Cumpleaños</span>
+          <span class="ocasion-chip">🎉 Fiestas</span>
+          <span class="ocasion-chip">🏢 Empresas</span>
+          <span class="ocasion-chip">🍻 Reuniones</span>
+          <span class="ocasion-chip">🏫 Kioscos</span>
+          <span class="ocasion-chip">🎊 Eventos</span>
+        </div>
+        <div class="mayorista-perks">
+          <div class="perk-item">✅ Precios por volumen</div>
+          <div class="perk-item">✅ Atención personalizada</div>
+          <div class="perk-item">✅ Respuesta inmediata</div>
+        </div>
+        <a class="btn btn-wa mayorista-wa" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20precios%20mayoristas%20para%20mi%20evento." target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Consultar precio mayorista
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- ══════════════ PRODUCTOS ══════════════ -->
 <section id="productos" class="section section-alt">
@@ -2108,52 +2226,6 @@
   </div>
 </section>
 
-<!-- ══════════════ MAYORISTA ══════════════ -->
-<section id="mayorista" class="section mayorista-section">
-  <div class="container">
-    <div class="mayorista-inner fade-up">
-
-      <div class="section-label" style="background:rgba(255,208,0,.15);border-color:rgba(255,208,0,.4);color:var(--yellow);">🏭 Distribuidora Mayorista</div>
-      <h2 class="section-title" style="color:#fff;">Precios especiales<br>por volumen</h2>
-      <p class="mayorista-sub">
-        Somos distribuidores mayoristas pero también atendemos minoristas. Si organizás un cumpleaños,
-        una fiesta, un evento o simplemente querés stockearte, consultanos y te armamos
-        una cotización a medida con los mejores precios del mercado.
-      </p>
-
-      <div class="mayorista-ocasiones">
-        <span class="ocasion-chip">🎂 Cumpleaños</span>
-        <span class="ocasion-chip">🎉 Fiestas y eventos</span>
-        <span class="ocasion-chip">🏢 Empresas y oficinas</span>
-        <span class="ocasion-chip">🍻 Juntadas y reuniones</span>
-        <span class="ocasion-chip">🏫 Kioscos y buffets</span>
-        <span class="ocasion-chip">📦 Compra mayorista</span>
-      </div>
-
-      <div class="mayorista-benefits">
-        <div class="mayorista-benefit">
-          <span class="benefit-icon">💰</span>
-          <span>Precios especiales por cantidad</span>
-        </div>
-        <div class="mayorista-benefit">
-          <span class="benefit-icon">🤝</span>
-          <span>Atención personalizada</span>
-        </div>
-        <div class="mayorista-benefit">
-          <span class="benefit-icon">⚡</span>
-          <span>Respuesta rápida por WhatsApp</span>
-        </div>
-      </div>
-
-      <a class="btn btn-wa mayorista-wa" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20precios%20mayoristas%20para%20mi%20evento." target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Pedir cotización mayorista
-      </a>
-
-    </div>
-  </div>
-</section>
-
 <!-- ══════════════ CTA FINAL ══════════════ -->
 <section id="contacto" class="section" style="padding:0;">
   <div id="cta-final">
@@ -2242,7 +2314,7 @@
       }
     });
   }, { rootMargin: '-10% 0px -70% 0px', threshold: 0 });
-  ['productos','promos-pan','combos','cumpleanito','contacto'].forEach(id => {
+  ['mayorista','productos','promos-pan','combos','cumpleanito','contacto'].forEach(id => {
     const el = document.getElementById(id);
     if (el) chipObserver.observe(el);
   });
