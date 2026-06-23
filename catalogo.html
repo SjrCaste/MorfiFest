@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MORFI FEST — Todo para tu fiesta</title>
+  <meta name="description" content="Combos, hamburguesas, panchos, snacks, aderezos y promos para fiestas y cumpleaños. Pedro Lagrave 501, Pilar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ══════════════════════════════════════
+       VARIABLES & RESET
+    ══════════════════════════════════════ */
+    :root {
+      --red:        #C8102E;
+      --red-dark:   #8B0E20;
+      --red-light:  #E63950;
+      --yellow:     #FFD000;
+      --yellow-dark:#E6B800;
+      --yellow-light:#FFF3A0;
+      --brown:      #3D1A0A;
+      --white:      #FFFFFF;
+      --bg:         #FFFBF0;
+      --bg-warm:    #FFF5D6;
+      --text:       #1A1A1A;
+      --text-soft:  #555555;
+      --border:     #E8D9B0;
+      --shadow:     rgba(0,0,0,.12);
+      --shadow-lg:  rgba(0,0,0,.20);
+      --radius:     16px;
+      --radius-sm:  10px;
+      --radius-lg:  24px;
+      --font-body:  'Nunito', sans-serif;
+      --font-head:  'Fredoka One', cursive;
+      --wa-number:  549XXXXXXXXXX;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+    ul  { list-style: none; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* ══════════════════════════════════════
+       HEADER
+    ══════════════════════════════════════ */
+    #header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--red-dark);
+      box-shadow: 0 3px 12px rgba(0,0,0,.35);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .header-logo img {
+      height: 52px;
+      width: auto;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .header-logo-text {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      color: var(--yellow);
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 0 var(--brown);
+      line-height: 1.1;
+    }
+
+    .header-logo-text span {
+      display: block;
+      font-family: var(--font-body);
+      font-size: .65rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.8);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .header-logo-fallback {
+      display: none;
+    }
+
+    /* Desktop nav */
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .header-nav a {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: .85rem;
+      color: rgba(255,255,255,.9);
+      transition: background .2s, color .2s;
+      white-space: nowrap;
+    }
+
+    .header-nav a:hover {
+      background: rgba(255,255,255,.15);
+      color: var(--yellow);
+    }
+
+    .header-wa-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #25D366;
+      color: #fff !important;
+      padding: 8px 14px !important;
+      border-radius: 20px !important;
+      font-weight: 800 !important;
+      font-size: .82rem !important;
+      transition: background .2s, transform .2s !important;
+      flex-shrink: 0;
+    }
+
+    .header-wa-btn:hover {
+      background: #1da851 !important;
+      transform: scale(1.04);
+    }
+
+    /* Mobile hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--yellow);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    .mobile-nav {
+      display: none;
+      background: var(--red-dark);
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding: 8px 16px 16px;
+    }
+
+    .mobile-nav a {
+      display: block;
+      padding: 10px 4px;
+      font-weight: 700;
+      color: rgba(255,255,255,.9);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-size: .95rem;
+    }
+
+    .mobile-nav a:last-child { border-bottom: none; }
+
+    .mobile-nav.open { display: block; }
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    #hero {
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 50%, #A80020 100%);
+      padding: 64px 16px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(255,208,0,.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 30%, rgba(255,208,0,.10) 0%, transparent 50%);
+    }
+
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      opacity: .07;
+      background: var(--yellow);
+    }
+
+    .hero-blob-1 {
+      width: 400px; height: 400px;
+      top: -150px; right: -100px;
+    }
+
+    .hero-blob-2 {
+      width: 300px; height: 300px;
+      bottom: -120px; left: -80px;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .hero-logo-wrap {
+      margin-bottom: 28px;
+    }
+
+    .hero-logo-wrap img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      margin: 0 auto;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,.5));
+      animation: heroFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    .hero-logo-fallback-big {
+      width: 200px;
+      height: 200px;
+      background: var(--yellow);
+      border-radius: 50%;
+      margin: 0 auto 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 2.8rem;
+      color: var(--red-dark);
+      box-shadow: 0 8px 30px rgba(0,0,0,.4);
+      animation: heroFloat 3s ease-in-out infinite;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .hero-logo-fallback-big .big-sub {
+      font-family: var(--font-body);
+      font-size: .8rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--brown);
+      font-weight: 900;
+      font-size: .8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 4px 16px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 16px;
+      text-shadow: 2px 3px 0 var(--red-dark);
+    }
+
+    .hero-title .yellow { color: var(--yellow); }
+
+    .hero-sub {
+      font-size: clamp(.95rem, 2.5vw, 1.15rem);
+      color: rgba(255,255,255,.85);
+      margin-bottom: 36px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: transform .2s, box-shadow .2s, background .2s;
+      text-decoration: none;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-wa {
+      background: #25D366;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(37,211,102,.4);
+    }
+
+    .btn-wa:hover {
+      background: #1da851;
+      box-shadow: 0 8px 24px rgba(37,211,102,.5);
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,.1);
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,.4);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,.2);
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    .btn-yellow {
+      background: var(--yellow);
+      color: var(--brown);
+      box-shadow: 0 6px 20px rgba(255,208,0,.4);
+    }
+
+    .btn-yellow:hover {
+      background: var(--yellow-dark);
+      box-shadow: 0 8px 24px rgba(255,208,0,.5);
+    }
+
+    .btn-red {
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(200,16,46,.35);
+    }
+
+    .btn-red:hover {
+      background: var(--red-dark);
+    }
+
+    .btn-sm {
+      padding: 10px 20px;
+      font-size: .88rem;
+    }
+
+    /* ══════════════════════════════════════
+       INFO STRIP
+    ══════════════════════════════════════ */
+    .info-strip {
+      background: var(--yellow);
+      padding: 10px 16px;
+      text-align: center;
+      font-weight: 800;
+      font-size: .88rem;
+      color: var(--brown);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .info-strip-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ══════════════════════════════════════
+       CATEGORY NAV CHIPS
+    ══════════════════════════════════════ */
+    #cat-nav {
+      background: var(--white);
+      border-bottom: 2px solid var(--border);
+      padding: 16px;
+      position: sticky;
+      top: 73px;
+      z-index: 900;
+    }
+
+    .cat-chips {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .cat-chips::-webkit-scrollbar { display: none; }
+
+    .cat-chip {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 50px;
+      background: var(--bg-warm);
+      border: 2px solid var(--border);
+      font-weight: 700;
+      font-size: .82rem;
+      cursor: pointer;
+      transition: background .2s, border-color .2s, color .2s, transform .15s;
+      white-space: nowrap;
+      color: var(--text);
+    }
+
+    .cat-chip:hover,
+    .cat-chip.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    /* ══════════════════════════════════════
+       SEARCH BAR
+    ══════════════════════════════════════ */
+    .search-wrap {
+      max-width: 560px;
+      margin: 32px auto 0;
+      padding: 0 16px;
+    }
+
+    .search-inner {
+      display: flex;
+      align-items: center;
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 50px;
+      padding: 4px 4px 4px 20px;
+      box-shadow: 0 4px 16px var(--shadow);
+      transition: border-color .2s;
+    }
+
+    .search-inner:focus-within {
+      border-color: var(--red);
+    }
+
+    .search-inner input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-family: var(--font-body);
+      font-size: .95rem;
+      background: transparent;
+      color: var(--text);
+    }
+
+    .search-inner input::placeholder { color: #aaa; }
+
+    .search-btn {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 18px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: .85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background .2s;
+    }
+
+    .search-btn:hover { background: var(--red-dark); }
+
+    .no-results {
+      text-align: center;
+      padding: 40px 16px;
+      color: var(--text-soft);
+      font-size: 1.1rem;
+      display: none;
+    }
+
+    /* ══════════════════════════════════════
+       SECTION GENERAL
+    ══════════════════════════════════════ */
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-alt {
+      background: var(--bg-warm);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-weight: 800;
+      font-size: .72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--red-dark);
+      line-height: 1.15;
+    }
+
+    .section-sub {
+      color: var(--text-soft);
+      font-size: .95rem;
+      margin-top: 8px;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 4px;
+      background: var(--yellow);
+      border-radius: 2px;
+      margin: 14px auto 0;
+    }
+
+    /* ══════════════════════════════════════
+       CATEGORY BLOCK
+    ══════════════════════════════════════ */
+    .cat-block {
+      margin-bottom: 56px;
+    }
+
+    .cat-block:last-child { margin-bottom: 0; }
+
+    .cat-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .cat-label-text {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      color: var(--red);
+    }
+
+    .cat-label-line {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, var(--border), transparent);
+      border-radius: 1px;
+    }
+
+    .cat-label-emoji {
+      font-size: 1.6rem;
+    }
+
+    /* ══════════════════════════════════════
+       PRICE TABLE
+    ══════════════════════════════════════ */
+    .price-table {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-width: 600px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 6px rgba(0,0,0,.05);
+      transition: background .18s, border-color .18s;
+    }
+
+    .price-row:hover {
+      background: var(--yellow-light);
+      border-color: var(--yellow-dark);
+    }
+
+    .price-name {
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--text);
+    }
+
+    .price-val {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      color: var(--red);
+      white-space: nowrap;
+    }
+
+    /* ══════════════════════════════════════
+       PRODUCT GRID
+    ══════════════════════════════════════ */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 16px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 2px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 3px 12px var(--shadow);
+      transition: transform .22s, box-shadow .22s, border-color .22s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px var(--shadow-lg);
+      border-color: var(--red-light);
+    }
+
+    .product-img {
+      aspect-ratio: 1;
+      background: var(--bg-warm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-body {
+      padding: 12px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-name {
+      font-weight: 800;
+      font-size: .88rem;
+      color: var(--text);
+      line-height: 1.3;
+      flex: 1;
+    }
+
+    .product-price {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      color: var(--red);
+      margin-top: 8px;
+    }
+
+    .product-price .unit {
+      font-family: var(--font-body);
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--text-soft);
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════════
+       PROMOS CON PAN — TABS
+    ══════════════════════════════════════ */
+    .promo-tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .promo-tab {
+      padding: 10px 24px;
+      border-radius: 50px;
+      border: 2px solid var(--red);
+      background: transparent;
+      color: var(--red);
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: .9rem;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+
+    .promo-tab.active,
+    .promo-tab:hover {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .promo-tab-content { display: none; }
+    .promo-tab-content.active { display: block; }
+
+    .promo-items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .promo-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 2px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 4px 16px var(--shadow);
+      transition: transform .22s, box-shadow .22s;
+    }
+
+    .promo-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px var(--shadow-lg);
+    }
+
+    .promo-card-header {
+      background: linear-gradient(135deg, var(--red-dark), var(--red));
+      padding: 16px 20px;
+      color: var(--white);
+    }
+
+    .promo-card-header h3 {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      margin-bottom: 2px;
+    }
+
+    .promo-card-header small {
+      font-size: .75rem;
+      opacity: .8;
+    }
+
+    .promo-tiers {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .promo-tier {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: var(--bg-warm);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      transition: background .2s;
+    }
+
+    .promo-tier:hover {
+      background: var(--yellow-light);
+      border-color: var(--yellow-dark);
+    }
+
+    .promo-tier-qty {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--red-dark);
+      min-width: 40px;
+    }
+
+    .promo-tier-price {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      color: var(--red);
+    }
+
+    .promo-tier-unit {
+      font-size: .72rem;
+      color: var(--text-soft);
+      font-weight: 700;
+    }
+
+    /* ══════════════════════════════════════
+       COMBOS
+    ══════════════════════════════════════ */
+    .combos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .combo-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 6px 24px var(--shadow);
+      border: 2px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      transition: transform .22s, box-shadow .22s;
+    }
+
+    .combo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 36px var(--shadow-lg);
+    }
+
+    .combo-header {
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 100%);
+      padding: 24px 20px 20px;
+      color: var(--white);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .combo-header::after {
+      content: '';
+      position: absolute;
+      bottom: -18px;
+      left: 0;
+      right: 0;
+      height: 36px;
+      background: var(--white);
+      border-radius: 50% 50% 0 0 / 100%;
+    }
+
+    .combo-emoji {
+      font-size: 2.8rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .combo-name {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+    }
+
+    .combo-body {
+      padding: 28px 20px 20px;
+      flex: 1;
+    }
+
+    .combo-price-wrap {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .combo-price-label {
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .combo-price {
+      font-family: var(--font-head);
+      font-size: 2.2rem;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .combo-contents-label {
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .combo-contents {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .combo-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .88rem;
+    }
+
+    .combo-item-qty {
+      background: var(--red);
+      color: #fff;
+      font-weight: 800;
+      font-size: .75rem;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .combo-item-name { color: var(--text); font-weight: 600; }
+
+    .combo-footer { padding: 0 20px 20px; }
+
+    /* ══════════════════════════════════════
+       CUMPLEAÑITO
+    ══════════════════════════════════════ */
+    #cumpleanito {
+      background: linear-gradient(160deg, #FFF5D6 0%, #FFE8C0 100%);
+    }
+
+    .cumple-intro {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    .cumple-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .cumple-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 6px 24px var(--shadow);
+      border: 2px solid rgba(200,16,46,.15);
+      display: flex;
+      flex-direction: column;
+      transition: transform .22s, box-shadow .22s;
+    }
+
+    .cumple-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 36px var(--shadow-lg);
+    }
+
+    .cumple-header {
+      background: linear-gradient(135deg, #B8860B 0%, var(--yellow-dark) 50%, var(--yellow) 100%);
+      padding: 24px 20px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cumple-header::after {
+      content: '';
+      position: absolute;
+      bottom: -18px;
+      left: 0;
+      right: 0;
+      height: 36px;
+      background: var(--white);
+      border-radius: 50% 50% 0 0 / 100%;
+    }
+
+    .cumple-emoji {
+      font-size: 2.8rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .cumple-name {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      color: var(--brown);
+    }
+
+    .cumple-badge {
+      display: inline-block;
+      margin-top: 6px;
+      background: var(--red);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+    }
+
+    .cumple-body {
+      padding: 28px 20px 20px;
+      flex: 1;
+    }
+
+    .cumple-price {
+      font-family: var(--font-head);
+      font-size: 2.2rem;
+      color: var(--red);
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .cumple-tagline {
+      text-align: center;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--text-soft);
+      margin-bottom: 20px;
+    }
+
+    .cumple-contents { margin-bottom: 20px; }
+
+    .cumple-footer { padding: 0 20px 20px; }
+
+    /* ══════════════════════════════════════
+       CTA FINAL
+    ══════════════════════════════════════ */
+    #cta-final {
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 100%);
+      padding: 80px 16px;
+      text-align: center;
+      color: var(--white);
+    }
+
+    #cta-final .cta-logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 6px 24px rgba(0,0,0,.4);
+    }
+
+    #cta-final h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--yellow);
+      margin-bottom: 12px;
+    }
+
+    #cta-final p {
+      font-size: 1rem;
+      opacity: .88;
+      max-width: 480px;
+      margin: 0 auto 32px;
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer {
+      background: var(--brown);
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 28px 16px;
+    }
+
+    footer p { font-size: .82rem; margin-bottom: 4px; }
+
+    footer strong { color: var(--yellow); }
+
+    /* ══════════════════════════════════════
+       FLOATING WA BUTTON
+    ══════════════════════════════════════ */
+    .wa-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,.55);
+      transition: transform .22s, box-shadow .22s;
+      cursor: pointer;
+    }
+
+    .wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 32px rgba(37,211,102,.65);
+    }
+
+    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+    .wa-float-pulse {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      background: rgba(37,211,102,.3);
+      animation: pulse 2s ease-out infinite;
+    }
+
+    @keyframes pulse {
+      0%   { transform: scale(1); opacity: .8; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    /* Back to top */
+    .back-top {
+      position: fixed;
+      bottom: 96px;
+      right: 24px;
+      z-index: 9998;
+      width: 44px;
+      height: 44px;
+      background: var(--red-dark);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s, transform .3s;
+    }
+
+    .back-top.visible {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+
+    /* ══════════════════════════════════════
+       ANIMATION
+    ══════════════════════════════════════ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .header-nav { display: none; }
+      .hamburger  { display: flex; }
+
+      #cat-nav { top: 72px; }
+
+      .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+
+      .combos-grid,
+      .cumple-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .promo-items-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wa-float { bottom: 16px; right: 16px; width: 54px; height: 54px; }
+      .back-top { bottom: 84px; right: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .info-strip { gap: 12px; font-size: .78rem; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header id="header">
+  <div class="header-inner">
+    <a href="#hero" class="header-logo">
+      <img src="logo.png" alt="Morfi Fest" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="header-logo-fallback" style="display:none;width:44px;height:44px;background:var(--yellow);border-radius:50%;align-items:center;justify-content:center;font-family:var(--font-head);font-size:.85rem;color:var(--red-dark);">MF</div>
+      <div class="header-logo-text">MORFI FEST<span>Todo para tu fiesta</span></div>
+    </a>
+
+    <nav class="header-nav">
+      <a href="#hero">Inicio</a>
+      <a href="#productos">Productos</a>
+      <a href="#promos-pan">Promos con Pan</a>
+      <a href="#combos">Combos</a>
+      <a href="#cumpleanito">Cumpleañitos</a>
+      <a href="#contacto">Contacto</a>
+      <a class="header-wa-btn" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20el%20cat%C3%A1logo%20y%20las%20promos%20disponibles." target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="#hero" onclick="toggleMenu()">🏠 Inicio</a>
+    <a href="#productos" onclick="toggleMenu()">🛒 Productos</a>
+    <a href="#promos-pan" onclick="toggleMenu()">🍞 Promos con Pan</a>
+    <a href="#combos" onclick="toggleMenu()">📦 Combos</a>
+    <a href="#cumpleanito" onclick="toggleMenu()">🎂 Cumpleañitos</a>
+    <a href="#contacto" onclick="toggleMenu()">📍 Contacto</a>
+    <a href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20el%20cat%C3%A1logo%20y%20las%20promos%20disponibles." target="_blank" rel="noopener" style="color:#25D366;font-weight:900;">💬 Escribirnos por WhatsApp</a>
+  </nav>
+</header>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-inner">
+    <div class="hero-logo-wrap">
+      <img src="logo.png" alt="Morfi Fest" onerror="this.style.display='none';document.getElementById('hero-logo-fallback').style.display='flex'" />
+      <div id="hero-logo-fallback" class="hero-logo-fallback-big" style="display:none;">
+        MORFI<br>FEST
+        <div class="big-sub">🍔 🌭 🥔</div>
+      </div>
+    </div>
+    <div class="hero-eyebrow">🎉 Todo para tu fiesta</div>
+    <h1 class="hero-title">
+      Todo para tu<br><span class="yellow">fiesta perfecta</span>
+    </h1>
+    <p class="hero-sub">
+      Combos, snacks, hamburguesas, panchos y promos listas para compartir. Llevamos la comida, vos ponés la fiesta.
+    </p>
+    <div class="hero-btns">
+      <a class="btn btn-wa" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20el%20cat%C3%A1logo%20y%20las%20promos%20disponibles." target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Consultar por WhatsApp
+      </a>
+      <a class="btn btn-outline" href="#productos">
+        Ver catálogo ↓
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ INFO STRIP ══════════════ -->
+<div class="info-strip">
+  <span class="info-strip-item">📍 Pedro Lagrave 501, Pilar</span>
+  <span class="info-strip-item">🕐 Lun a Sáb | 08 a 20 hs</span>
+  <span class="info-strip-item">🎉 Hamburguesas · Salchichas · Snacks · Aderezos · Panes</span>
+</div>
+
+<!-- ══════════════ CAT NAV ══════════════ -->
+<div id="cat-nav">
+  <div class="cat-chips">
+    <button class="cat-chip" onclick="goTo('#productos')">🛒 Productos</button>
+    <button class="cat-chip" onclick="goTo('#promos-pan')">🎁 Promos con Pan</button>
+    <button class="cat-chip" onclick="goTo('#combos')">📦 Combos</button>
+    <button class="cat-chip" onclick="goTo('#cumpleanito')">🎂 Cumpleañitos</button>
+    <button class="cat-chip" onclick="goTo('#contacto')">💬 Contacto</button>
+  </div>
+</div>
+
+
+
+<!-- ══════════════ PRODUCTOS ══════════════ -->
+<section id="productos" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-tag">Productos</span>
+      <h2 class="section-title">Lista de precios unitarios</h2>
+      <p class="section-sub">Precios por unidad. Consultanos por cantidades y combos especiales.</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- SNACKS -->
+    <div class="cat-block fade-up">
+      <div class="cat-label">
+        <span class="cat-label-emoji">🥔</span>
+        <span class="cat-label-text">Snacks</span>
+        <div class="cat-label-line"></div>
+      </div>
+      <div class="price-table">
+        <div class="price-row"><span class="price-name">Clásicas 70 g</span><span class="price-val">$ 1.800</span></div>
+        <div class="price-row"><span class="price-name">Americano 70 g</span><span class="price-val">$ 1.800</span></div>
+        <div class="price-row"><span class="price-name">Jamón Serrano 70 g</span><span class="price-val">$ 2.300</span></div>
+        <div class="price-row"><span class="price-name">Cheddar 70 g</span><span class="price-val">$ 2.300</span></div>
+        <div class="price-row"><span class="price-name">Clásicas 120 g</span><span class="price-val">$ 2.800</span></div>
+        <div class="price-row"><span class="price-name">Conitox Queso 60 g</span><span class="price-val">$ 1.950</span></div>
+        <div class="price-row"><span class="price-name">Nachitox 100 g</span><span class="price-val">$ 2.100</span></div>
+      </div>
+    </div>
+
+    <!-- ADEREZOS -->
+    <div class="cat-block fade-up">
+      <div class="cat-label">
+        <span class="cat-label-emoji">🍅</span>
+        <span class="cat-label-text">Aderezos</span>
+        <div class="cat-label-line"></div>
+      </div>
+      <div class="price-table">
+        <div class="price-row"><span class="price-name">Benidorm Mayo 500 g</span><span class="price-val">$ 3.000</span></div>
+        <div class="price-row"><span class="price-name">Benidorm Mostaza 500 g</span><span class="price-val">$ 2.850</span></div>
+        <div class="price-row"><span class="price-name">Benidorm Ketchup 500 g</span><span class="price-val">$ 4.100</span></div>
+        <div class="price-row"><span class="price-name">Danica General 250 g</span><span class="price-val">$ 1.850</span></div>
+        <div class="price-row"><span class="price-name">Danica Cheddar 250 g</span><span class="price-val">$ 3.200</span></div>
+      </div>
+    </div>
+
+    <!-- HAMBURGUESAS -->
+    <div class="cat-block fade-up">
+      <div class="cat-label">
+        <span class="cat-label-emoji">🍔</span>
+        <span class="cat-label-text">Hamburguesas</span>
+        <div class="cat-label-line"></div>
+      </div>
+      <div class="price-table">
+        <div class="price-row"><span class="price-name">La Defensa 55 g</span><span class="price-val">$ 500</span></div>
+        <div class="price-row"><span class="price-name">La Defensa 110 g</span><span class="price-val">$ 900</span></div>
+        <div class="price-row"><span class="price-name">La Conquista 69 g</span><span class="price-val">$ 700</span></div>
+        <div class="price-row"><span class="price-name">Rancho Alto 83 g</span><span class="price-val">$ 1.400</span></div>
+      </div>
+    </div>
+
+    <!-- SALCHICHAS -->
+    <div class="cat-block fade-up">
+      <div class="cat-label">
+        <span class="cat-label-emoji">🌭</span>
+        <span class="cat-label-text">Salchichas</span>
+        <div class="cat-label-line"></div>
+      </div>
+      <div class="price-table">
+        <div class="price-row"><span class="price-name">Carcarañá Corta</span><span class="price-val">$ 350</span></div>
+        <div class="price-row"><span class="price-name">Santamarina Larga</span><span class="price-val">$ 600</span></div>
+      </div>
+    </div>
+
+    <!-- PANES -->
+    <div class="cat-block fade-up">
+      <div class="cat-label">
+        <span class="cat-label-emoji">🍞</span>
+        <span class="cat-label-text">Panes</span>
+        <div class="cat-label-line"></div>
+      </div>
+      <div class="price-table">
+        <div class="price-row"><span class="price-name">Pan Ham Bamlife</span><span class="price-val">$ 470</span></div>
+        <div class="price-row"><span class="price-name">Pan Pancho Largo Bamlife</span><span class="price-val">$ 400</span></div>
+        <div class="price-row"><span class="price-name">Pan Pancho Corto Rocio</span><span class="price-val">$ 330</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ PROMOS CON PAN ══════════════ -->
+<section id="promos-pan" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-tag">Promo especial</span>
+      <h2 class="section-title">Promos con Pan 🍞</h2>
+      <p class="section-sub">Hamburguesas y salchichas con pan incluido. Elegí la cantidad que necesitás.</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="promo-tabs">
+      <button class="promo-tab active" onclick="switchPromoTab('hamburguesas-pan')">🍔 Hamburguesas</button>
+      <button class="promo-tab" onclick="switchPromoTab('salchichas-pan')">🌭 Salchichas</button>
+    </div>
+
+    <!-- HAMBURGUESAS CON PAN -->
+    <div class="promo-tab-content active fade-up" id="hamburguesas-pan">
+      <div class="promo-items-grid">
+
+        <div class="promo-card">
+          <div class="promo-card-header">
+            <h3>🍔 La Defensa 55g</h3>
+            <small>Hamburguesa + pan incluido</small>
+          </div>
+          <div class="promo-tiers">
+            <div class="promo-tier">
+              <span class="promo-tier-qty">4 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 3.700</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">20 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 18.100</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">40 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 35.400</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">60 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 51.900</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-card">
+          <div class="promo-card-header">
+            <h3>🍔 La Defensa 110g</h3>
+            <small>Hamburguesa + pan incluido</small>
+          </div>
+          <div class="promo-tiers">
+            <div class="promo-tier">
+              <span class="promo-tier-qty">4 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 5.200</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">20 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 25.400</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">40 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 49.600</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">60 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 72.700</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-card">
+          <div class="promo-card-header">
+            <h3>🍔 La Conquista 69g</h3>
+            <small>Hamburguesa + pan incluido</small>
+          </div>
+          <div class="promo-tiers">
+            <div class="promo-tier">
+              <span class="promo-tier-qty">4 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 4.400</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">20 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 21.450</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">40 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 41.900</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">60 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 61.300</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-card">
+          <div class="promo-card-header">
+            <h3>🍔 Rancho Alto 83g</h3>
+            <small>Hamburguesa + pan incluido</small>
+          </div>
+          <div class="promo-tiers">
+            <div class="promo-tier">
+              <span class="promo-tier-qty">4 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 7.200</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">20 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 35.300</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">40 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 68.900</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">60 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 100.100</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SALCHICHAS CON PAN -->
+    <div class="promo-tab-content" id="salchichas-pan">
+      <div class="promo-items-grid">
+
+        <div class="promo-card">
+          <div class="promo-card-header">
+            <h3>🌭 Carcarañá Corta</h3>
+            <small>Salchicha + pan incluido</small>
+          </div>
+          <div class="promo-tiers">
+            <div class="promo-tier">
+              <span class="promo-tier-qty">6 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 3.800</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">12 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 7.550</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">30 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 18.400</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">60 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 35.900</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-card">
+          <div class="promo-card-header">
+            <h3>🌭 Santamarina Larga</h3>
+            <small>Salchicha + pan incluido</small>
+          </div>
+          <div class="promo-tiers">
+            <div class="promo-tier">
+              <span class="promo-tier-qty">6 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 5.800</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">12 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 11.300</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">30 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 27.600</span>
+            </div>
+            <div class="promo-tier">
+              <span class="promo-tier-qty">60 u</span>
+              <span class="promo-tier-unit">pack</span>
+              <span class="promo-tier-price">$ 53.900</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:32px;">
+      <a class="btn btn-wa" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20las%20Promos%20con%20Pan." target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Consultar promos con pan
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ COMBOS ══════════════ -->
+<section id="combos" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-tag">Combos para compartir</span>
+      <h2 class="section-title">Combos listos para tu evento 📦</h2>
+      <p class="section-sub">Todo armado y listo. Solo pedí, nosotros preparamos.</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="combos-grid">
+
+      <!-- Combo Snack -->
+      <div class="combo-card fade-up">
+        <div class="combo-header">
+          <span class="combo-emoji">🥔</span>
+          <div class="combo-name">Combo Snack</div>
+        </div>
+        <div class="combo-body">
+          <div class="combo-price-wrap">
+            <div class="combo-price-label">Precio total</div>
+            <div class="combo-price">$ 9.100</div>
+          </div>
+          <div class="combo-contents-label">Contenido</div>
+          <div class="combo-contents">
+            <div class="combo-item"><span class="combo-item-qty">1</span><span class="combo-item-name">Papa 70 Clásicas</span></div>
+            <div class="combo-item"><span class="combo-item-qty">1</span><span class="combo-item-name">Conitox Queso 60</span></div>
+            <div class="combo-item"><span class="combo-item-qty">1</span><span class="combo-item-name">Nachitox 100</span></div>
+            <div class="combo-item"><span class="combo-item-qty">1</span><span class="combo-item-name">Papa 70 Jamón</span></div>
+            <div class="combo-item"><span class="combo-item-qty">1</span><span class="combo-item-name">Papa 70 Cheddar</span></div>
+          </div>
+        </div>
+        <div class="combo-footer">
+          <a class="btn btn-wa" style="width:100%;justify-content:center;" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20el%20Combo%20Snack%20de%20%249.100." target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Consultar este combo
+          </a>
+        </div>
+      </div>
+
+      <!-- 18 Super Panchos -->
+      <div class="combo-card fade-up">
+        <div class="combo-header">
+          <span class="combo-emoji">🌭</span>
+          <div class="combo-name">18 Super Panchos</div>
+        </div>
+        <div class="combo-body">
+          <div class="combo-price-wrap">
+            <div class="combo-price-label">Precio total</div>
+            <div class="combo-price">$ 27.000</div>
+          </div>
+          <div class="combo-contents-label">Contenido</div>
+          <div class="combo-contents">
+            <div class="combo-item"><span class="combo-item-qty">18</span><span class="combo-item-name">Salchicha Larga</span></div>
+            <div class="combo-item"><span class="combo-item-qty">18</span><span class="combo-item-name">Panes</span></div>
+            <div class="combo-item"><span class="combo-item-qty">2</span><span class="combo-item-name">Snacks</span></div>
+            <div class="combo-item"><span class="combo-item-qty">1</span><span class="combo-item-name">Papa Pay 250g</span></div>
+            <div class="combo-item"><span class="combo-item-qty">2</span><span class="combo-item-name">Aderezos</span></div>
+          </div>
+        </div>
+        <div class="combo-footer">
+          <a class="btn btn-wa" style="width:100%;justify-content:center;" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20el%20Combo%2018%20Super%20Panchos%20de%20%2427.000." target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Consultar este combo
+          </a>
+        </div>
+      </div>
+
+      <!-- 24 Panchos -->
+      <div class="combo-card fade-up">
+        <div class="combo-header">
+          <span class="combo-emoji">🌭</span>
+          <div class="combo-name">24 Panchos</div>
+        </div>
+        <div class="combo-body">
+          <div class="combo-price-wrap">
+            <div class="combo-price-label">Precio total</div>
+            <div class="combo-price">$ 25.250</div>
+          </div>
+          <div class="combo-contents-label">Contenido</div>
+          <div class="combo-contents">
+            <div class="combo-item"><span class="combo-item-qty">24</span><span class="combo-item-name">Salchicha Corta</span></div>
+            <div class="combo-item"><span class="combo-item-qty">24</span><span class="combo-item-name">Panes</span></div>
+            <div class="combo-item"><span class="combo-item-qty">2</span><span class="combo-item-name">Aderezos</span></div>
+            <div class="combo-item"><span class="combo-item-qty">2</span><span class="combo-item-name">Snacks</span></div>
+            <div class="combo-item"><span class="combo-item-qty">1</span><span class="combo-item-name">Papa Pay 250g</span></div>
+          </div>
+        </div>
+        <div class="combo-footer">
+          <a class="btn btn-wa" style="width:100%;justify-content:center;" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20el%20Combo%2024%20Panchos%20de%20%2425.250." target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Consultar este combo
+          </a>
+        </div>
+      </div>
+
+      <!-- 16 Hamburguesas -->
+      <div class="combo-card fade-up">
+        <div class="combo-header">
+          <span class="combo-emoji">🍔</span>
+          <div class="combo-name">16 Hamburguesas</div>
+        </div>
+        <div class="combo-body">
+          <div class="combo-price-wrap">
+            <div class="combo-price-label">Precio total</div>
+            <div class="combo-price">$ 23.200</div>
+          </div>
+          <div class="combo-contents-label">Contenido</div>
+          <div class="combo-contents">
+            <div class="combo-item"><span class="combo-item-qty">16</span><span class="combo-item-name">Hamburguesa 69g</span></div>
+            <div class="combo-item"><span class="combo-item-qty">16</span><span class="combo-item-name">Panes</span></div>
+            <div class="combo-item"><span class="combo-item-qty">2</span><span class="combo-item-name">Aderezos</span></div>
+            <div class="combo-item"><span class="combo-item-qty">2</span><span class="combo-item-name">Snacks</span></div>
+          </div>
+        </div>
+        <div class="combo-footer">
+          <a class="btn btn-wa" style="width:100%;justify-content:center;" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20el%20Combo%2016%20Hamburguesas%20de%20%2423.200." target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Consultar este combo
+          </a>
+        </div>
+      </div>
+
+      <!-- 12 Maxi Hamburguesas -->
+      <div class="combo-card fade-up">
+        <div class="combo-header">
+          <span class="combo-emoji">🍔</span>
+          <div class="combo-name">12 Maxi Hamburguesas</div>
+        </div>
+        <div class="combo-body">
+          <div class="combo-price-wrap">
+            <div class="combo-price-label">Precio total</div>
+            <div class="combo-price">$ 22.600</div>
+          </div>
+          <div class="combo-contents-label">Contenido</div>
+          <div class="combo-contents">
+            <div class="combo-item"><span class="combo-item-qty">12</span><span class="combo-item-name">Hamburguesa 110g</span></div>
+            <div class="combo-item"><span class="combo-item-qty">12</span><span class="combo-item-name">Panes</span></div>
+            <div class="combo-item"><span class="combo-item-qty">1</span><span class="combo-item-name">Aderezo</span></div>
+            <div class="combo-item"><span class="combo-item-qty">2</span><span class="combo-item-name">Snacks</span></div>
+            <div class="combo-item"><span class="combo-item-qty">1</span><span class="combo-item-name">Cheddar</span></div>
+          </div>
+        </div>
+        <div class="combo-footer">
+          <a class="btn btn-wa" style="width:100%;justify-content:center;" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20el%20Combo%2012%20Maxi%20Hamburguesas%20de%20%2422.600." target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Consultar este combo
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CUMPLEAÑITO ══════════════ -->
+<section id="cumpleanito" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-tag">Especial eventos</span>
+      <h2 class="section-title">Promo Cumpleañito 🎂</h2>
+      <p class="section-sub">Armado pensado para grupos. Solución práctica para tu fiesta.</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="cumple-grid">
+
+      <!-- Pancho 10 niños -->
+      <div class="cumple-card fade-up">
+        <div class="cumple-header">
+          <span class="cumple-emoji">🌭</span>
+          <div class="cumple-name">Panchos — 10 Niños</div>
+          <span class="cumple-badge">Ideal para cumpleaños</span>
+        </div>
+        <div class="cumple-body">
+          <div class="cumple-price">$ 19.350</div>
+          <div class="cumple-tagline">Listo para compartir</div>
+          <div class="cumple-contents combo-contents">
+            <div class="combo-item"><span class="combo-item-qty">18</span><span class="combo-item-name">Salchicha Corta</span></div>
+            <div class="combo-item"><span class="combo-item-qty">18</span><span class="combo-item-name">Panes</span></div>
+            <div class="combo-item"><span class="combo-item-qty">2</span><span class="combo-item-name">Aderezos</span></div>
+            <div class="combo-item"><span class="combo-item-qty">1</span><span class="combo-item-name">Papa Pay 100g</span></div>
+            <div class="combo-item"><span class="combo-item-qty">2</span><span class="combo-item-name">Snacks</span></div>
+          </div>
+        </div>
+        <div class="cumple-footer">
+          <a class="btn btn-yellow" style="width:100%;justify-content:center;" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20la%20Promo%20Cumple%C3%A3ito%20Panchos%2010%20ni%C3%B1os%20de%20%2419.350." target="_blank" rel="noopener">
+            🎉 Consultar promo
+          </a>
+        </div>
+      </div>
+
+      <!-- Hamburguesas 10 niños -->
+      <div class="cumple-card fade-up">
+        <div class="cumple-header">
+          <span class="cumple-emoji">🍔</span>
+          <div class="cumple-name">Hamburguesas — 10 Niños</div>
+          <span class="cumple-badge">Ideal para cumpleaños</span>
+        </div>
+        <div class="cumple-body">
+          <div class="cumple-price">$ 24.000</div>
+          <div class="cumple-tagline">Armado pensado para grupos</div>
+          <div class="cumple-contents combo-contents">
+            <div class="combo-item"><span class="combo-item-qty">20</span><span class="combo-item-name">Hamburg 55g</span></div>
+            <div class="combo-item"><span class="combo-item-qty">20</span><span class="combo-item-name">Panes</span></div>
+            <div class="combo-item"><span class="combo-item-qty">2</span><span class="combo-item-name">Aderezos</span></div>
+            <div class="combo-item"><span class="combo-item-qty">2</span><span class="combo-item-name">Snacks</span></div>
+          </div>
+        </div>
+        <div class="cumple-footer">
+          <a class="btn btn-yellow" style="width:100%;justify-content:center;" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20la%20Promo%20Cumple%C3%A3ito%20Hamburguesas%2010%20ni%C3%B1os%20de%20%2424.000." target="_blank" rel="noopener">
+            🎉 Consultar promo
+          </a>
+        </div>
+      </div>
+
+      <!-- Panchos 20 niños -->
+      <div class="cumple-card fade-up">
+        <div class="cumple-header">
+          <span class="cumple-emoji">🌭</span>
+          <div class="cumple-name">Panchos — 20 Niños</div>
+          <span class="cumple-badge">Solución práctica para tu fiesta</span>
+        </div>
+        <div class="cumple-body">
+          <div class="cumple-price">$ 43.400</div>
+          <div class="cumple-tagline">Listo para compartir</div>
+          <div class="cumple-contents combo-contents">
+            <div class="combo-item"><span class="combo-item-qty">42</span><span class="combo-item-name">Salchicha Corta</span></div>
+            <div class="combo-item"><span class="combo-item-qty">42</span><span class="combo-item-name">Panes</span></div>
+            <div class="combo-item"><span class="combo-item-qty">3</span><span class="combo-item-name">Aderezos</span></div>
+            <div class="combo-item"><span class="combo-item-qty">1</span><span class="combo-item-name">Papa Pay 250g</span></div>
+            <div class="combo-item"><span class="combo-item-qty">5</span><span class="combo-item-name">Snacks</span></div>
+          </div>
+        </div>
+        <div class="cumple-footer">
+          <a class="btn btn-yellow" style="width:100%;justify-content:center;" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20la%20Promo%20Cumple%C3%A3ito%20Panchos%2020%20ni%C3%B1os%20de%20%2443.400." target="_blank" rel="noopener">
+            🎉 Consultar promo
+          </a>
+        </div>
+      </div>
+
+      <!-- Hamburguesas 20 niños -->
+      <div class="cumple-card fade-up">
+        <div class="cumple-header">
+          <span class="cumple-emoji">🍔</span>
+          <div class="cumple-name">Hamburguesas — 20 Niños</div>
+          <span class="cumple-badge">Armado pensado para grupos</span>
+        </div>
+        <div class="cumple-body">
+          <div class="cumple-price">$ 48.500</div>
+          <div class="cumple-tagline">Solución práctica para tu fiesta</div>
+          <div class="cumple-contents combo-contents">
+            <div class="combo-item"><span class="combo-item-qty">40</span><span class="combo-item-name">Hamburg 55g</span></div>
+            <div class="combo-item"><span class="combo-item-qty">40</span><span class="combo-item-name">Panes</span></div>
+            <div class="combo-item"><span class="combo-item-qty">3</span><span class="combo-item-name">Aderezos</span></div>
+            <div class="combo-item"><span class="combo-item-qty">5</span><span class="combo-item-name">Snacks</span></div>
+          </div>
+        </div>
+        <div class="cumple-footer">
+          <a class="btn btn-yellow" style="width:100%;justify-content:center;" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20la%20Promo%20Cumple%C3%A3ito%20Hamburguesas%2020%20ni%C3%B1os%20de%20%2448.500." target="_blank" rel="noopener">
+            🎉 Consultar promo
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CTA FINAL ══════════════ -->
+<section id="contacto" class="section" style="padding:0;">
+  <div id="cta-final">
+    <img src="logo.png" class="cta-logo" alt="Morfi Fest" onerror="this.style.display='none'" />
+    <h2>¿Listo para tu fiesta?</h2>
+    <p>Escribinos y te armamos el combo perfecto para tu evento. Hamburguesas, panchos, snacks y todo lo que necesitás para una fiesta increíble.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a class="btn btn-wa" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20el%20cat%C3%A1logo%20y%20las%20promos%20disponibles." target="_blank" rel="noopener" style="font-size:1.05rem;padding:16px 32px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Escribir por WhatsApp
+      </a>
+    </div>
+    <p style="margin-top:28px;font-size:.85rem;opacity:.6;">📍 Pedro Lagrave 501, Pilar &nbsp;·&nbsp; 🕐 Lun a Sáb 08 a 20 hs</p>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <p><strong>MORFI FEST</strong> — Todo para tu fiesta</p>
+  <p>📍 Pedro Lagrave 501, Pilar &nbsp;|&nbsp; 🕐 Lunes a Sábado 08 a 20 hs</p>
+  <p style="margin-top:8px;font-size:.75rem;opacity:.5;">Catálogo digital — Precios sujetos a cambios sin previo aviso</p>
+</footer>
+
+<!-- ══════════════ FLOATING WA ══════════════ -->
+<a class="wa-float" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20el%20cat%C3%A1logo%20y%20las%20promos%20disponibles." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <div class="wa-float-pulse"></div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ══════════════ BACK TO TOP ══════════════ -->
+<button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>
+
+<!-- ══════════════ JAVASCRIPT ══════════════ -->
+<script>
+  /* ── Mobile menu ── */
+  function toggleMenu() {
+    document.getElementById('mobile-nav').classList.toggle('open');
+  }
+
+  /* ── Promo tabs ── */
+  function switchPromoTab(id) {
+    document.querySelectorAll('.promo-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.promo-tab-content').forEach(c => c.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  /* ── Scroll to section ── */
+  function goTo(selector) {
+    const el = document.querySelector(selector);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* ── Intersection observer for fade-up ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  /* ── Back to top visibility ── */
+  const backBtn = document.getElementById('back-top');
+  window.addEventListener('scroll', () => {
+    backBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  /* ── Close mobile menu on outside click ── */
+  document.addEventListener('click', (e) => {
+    const nav  = document.getElementById('mobile-nav');
+    const btn  = document.getElementById('hamburger');
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+
+</body>
+</html>
