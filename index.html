@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>MORFI FEST — Todo para tu fiesta</title>
   <meta name="description" content="Combos, hamburguesas, panchos, snacks, aderezos y promos para fiestas y cumpleaños. Pedro Lagrave 501, Pilar." />
+  <meta name="theme-color" content="#8B0E20" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet" />
@@ -1192,39 +1193,166 @@
     }
 
     /* ══════════════════════════════════════
-       RESPONSIVE
+       ACCESIBILIDAD
     ══════════════════════════════════════ */
-    @media (max-width: 768px) {
-      .header-nav { display: none; }
-      .hamburger  { display: flex; }
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      background: var(--yellow);
+      color: var(--brown);
+      padding: 10px 20px;
+      font-weight: 900;
+      font-size: .95rem;
+      z-index: 99999;
+      border-radius: 0 0 8px 0;
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 0; }
 
-      #cat-nav { top: 72px; }
-
-      .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      }
-
-      .combos-grid,
-      .cumple-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .promo-items-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .wa-float { bottom: 16px; right: 16px; width: 54px; height: 54px; }
-      .back-top { bottom: 84px; right: 16px; }
+    :focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 3px;
+      border-radius: 4px;
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+      .fade-up { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — TABLET (≤ 900px)
+    ══════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .combos-grid { grid-template-columns: repeat(2, 1fr); }
+      .cumple-grid  { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — MOBILE (≤ 768px)
+    ══════════════════════════════════════ */
+    @media (max-width: 768px) {
+      /* Header */
+      .header-nav   { display: none; }
+      .hamburger    { display: flex; }
+      .header-inner { padding: 8px 14px; }
+      .header-logo img       { height: 42px; }
+      .header-logo-text      { font-size: 1.2rem; }
+
+      /* Cat nav */
+      .cat-chip { padding: 9px 14px; font-size: .82rem; min-height: 40px; }
+
+      /* Hero */
+      #hero { padding: 40px 16px 56px; }
+      .hero-logo-wrap img         { width: 150px; height: 150px; }
+      .hero-logo-fallback-big     { width: 150px; height: 150px; font-size: 2.2rem; }
+      .hero-btns .btn             { flex: 1 1 auto; justify-content: center; min-width: 0; }
+
+      /* Info strip */
+      .info-strip { flex-direction: column; gap: 8px; padding: 12px 16px; }
+
+      /* Sections */
+      .section        { padding: 48px 0; }
+      .section-header { margin-bottom: 28px; }
+
+      /* Price table */
+      .price-table { max-width: 100%; }
+      .price-row   { padding: 12px 16px; }
+
+      /* Promos */
+      .promo-items-grid { grid-template-columns: 1fr; }
+
+      /* Combos & Cumpleañitos */
+      .combos-grid,
+      .cumple-grid   { grid-template-columns: 1fr; }
+      .combo-header,
+      .cumple-header { padding: 20px 16px 18px; }
+      .combo-body,
+      .cumple-body   { padding: 24px 16px 16px; }
+      .combo-footer,
+      .cumple-footer { padding: 0 16px 16px; }
+      .combo-price,
+      .cumple-price  { font-size: 1.9rem; }
+
+      /* Fixed floating elements — iOS safe area */
+      .wa-float {
+        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+        right: 16px;
+        width: 54px;
+        height: 54px;
+      }
+      .back-top {
+        bottom: calc(82px + env(safe-area-inset-bottom, 0px));
+        right: 16px;
+      }
+
+      /* CTA */
+      #cta-final { padding: 56px 16px; }
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — SMALL PHONE (≤ 480px)
+    ══════════════════════════════════════ */
     @media (max-width: 480px) {
-      .info-strip { gap: 12px; font-size: .78rem; }
-      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      /* Header */
+      .header-inner          { padding: 7px 12px; }
+      .header-logo img       { height: 36px; }
+      .header-logo-text      { font-size: 1.1rem; }
+      .header-logo-text span { display: none; }
+
+      /* Hero */
+      #hero                   { padding: 32px 16px 48px; }
+      .hero-logo-wrap img     { width: 120px; height: 120px; }
+      .hero-logo-fallback-big { width: 120px; height: 120px; font-size: 1.8rem; }
+      .hero-eyebrow           { font-size: .72rem; letter-spacing: 2px; }
+      .hero-btns              { flex-direction: column; }
+      .hero-btns .btn         { width: 100%; justify-content: center; }
+
+      /* Info strip */
+      .info-strip { font-size: .78rem; gap: 6px; }
+
+      /* Text */
+      .section-title   { font-size: 1.5rem; }
+      .cat-label-text  { font-size: 1.25rem; }
+      .cat-label-emoji { font-size: 1.3rem; }
+
+      /* Price rows */
+      .price-row  { padding: 11px 14px; }
+      .price-name { font-size: .88rem; }
+      .price-val  { font-size: 1rem; }
+
+      /* Tabs */
+      .promo-tabs { gap: 6px; }
+      .promo-tab  { padding: 9px 18px; font-size: .85rem; }
+
+      /* Cards */
+      .combo-price,
+      .cumple-price  { font-size: 1.7rem; }
+      .combo-item    { font-size: .85rem; }
+      .combo-footer .btn,
+      .cumple-footer .btn { font-size: .88rem; padding: 12px 16px; }
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — VERY SMALL (≤ 360px)
+    ══════════════════════════════════════ */
+    @media (max-width: 360px) {
+      .header-logo-text       { display: none; }
+      .hero-logo-wrap img     { width: 100px; height: 100px; }
+      .hero-logo-fallback-big { width: 100px; height: 100px; }
     }
 
   </style>
 </head>
 <body>
+
+<a class="skip-link" href="#productos">Saltar al contenido</a>
 
 <!-- ══════════════ HEADER ══════════════ -->
 <header id="header">
@@ -1248,18 +1376,18 @@
       </a>
     </nav>
 
-    <button class="hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
+    <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
   </div>
 
-  <nav class="mobile-nav" id="mobile-nav">
-    <a href="#hero" onclick="toggleMenu()">🏠 Inicio</a>
-    <a href="#productos" onclick="toggleMenu()">🛒 Productos</a>
-    <a href="#promos-pan" onclick="toggleMenu()">🍞 Promos con Pan</a>
-    <a href="#combos" onclick="toggleMenu()">📦 Combos</a>
-    <a href="#cumpleanito" onclick="toggleMenu()">🎂 Cumpleañitos</a>
-    <a href="#contacto" onclick="toggleMenu()">📍 Contacto</a>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
+    <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});toggleMenu()">🏠 Inicio</a>
+    <a href="#" onclick="event.preventDefault();goTo('#productos');toggleMenu()">🛒 Productos</a>
+    <a href="#" onclick="event.preventDefault();goTo('#promos-pan');toggleMenu()">🍞 Promos con Pan</a>
+    <a href="#" onclick="event.preventDefault();goTo('#combos');toggleMenu()">📦 Combos</a>
+    <a href="#" onclick="event.preventDefault();goTo('#cumpleanito');toggleMenu()">🎂 Cumpleañitos</a>
+    <a href="#" onclick="event.preventDefault();goTo('#contacto');toggleMenu()">📍 Contacto</a>
     <a href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20por%20el%20cat%C3%A1logo%20y%20las%20promos%20disponibles." target="_blank" rel="noopener" style="color:#25D366;font-weight:900;">💬 Escribirnos por WhatsApp</a>
   </nav>
 </header>
@@ -1303,15 +1431,15 @@
 </div>
 
 <!-- ══════════════ CAT NAV ══════════════ -->
-<div id="cat-nav">
+<nav id="cat-nav" aria-label="Categorías">
   <div class="cat-chips">
-    <button class="cat-chip" onclick="goTo('#productos')">🛒 Productos</button>
-    <button class="cat-chip" onclick="goTo('#promos-pan')">🎁 Promos con Pan</button>
-    <button class="cat-chip" onclick="goTo('#combos')">📦 Combos</button>
-    <button class="cat-chip" onclick="goTo('#cumpleanito')">🎂 Cumpleañitos</button>
-    <button class="cat-chip" onclick="goTo('#contacto')">💬 Contacto</button>
+    <button class="cat-chip" data-target="productos"   onclick="goTo('#productos')">🛒 Productos</button>
+    <button class="cat-chip" data-target="promos-pan"  onclick="goTo('#promos-pan')">🎁 Promos con Pan</button>
+    <button class="cat-chip" data-target="combos"      onclick="goTo('#combos')">📦 Combos</button>
+    <button class="cat-chip" data-target="cumpleanito" onclick="goTo('#cumpleanito')">🎂 Cumpleañitos</button>
+    <button class="cat-chip" data-target="contacto"    onclick="goTo('#contacto')">💬 Contacto</button>
   </div>
-</div>
+</nav>
 
 
 
@@ -1921,7 +2049,10 @@
 <script>
   /* ── Mobile menu ── */
   function toggleMenu() {
-    document.getElementById('mobile-nav').classList.toggle('open');
+    const nav = document.getElementById('mobile-nav');
+    const btn = document.getElementById('hamburger');
+    const isOpen = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
   }
 
   /* ── Promo tabs ── */
@@ -1932,11 +2063,23 @@
     event.currentTarget.classList.add('active');
   }
 
-  /* ── Scroll to section ── */
+  /* ── Scroll to section (offset for sticky header + cat-nav) ── */
   function goTo(selector) {
     const el = document.querySelector(selector);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (!el) return;
+    const headerH = document.getElementById('header').offsetHeight;
+    const catNavH = document.getElementById('cat-nav').offsetHeight;
+    const top = el.getBoundingClientRect().top + window.scrollY - headerH - catNavH - 8;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
   }
+
+  /* ── Sync cat-nav top to actual header height ── */
+  function syncHeaderHeight() {
+    const h = document.getElementById('header').offsetHeight;
+    document.getElementById('cat-nav').style.top = h + 'px';
+  }
+  syncHeaderHeight();
+  window.addEventListener('resize', syncHeaderHeight);
 
   /* ── Intersection observer for fade-up ── */
   const observer = new IntersectionObserver((entries) => {
@@ -1947,8 +2090,21 @@
       }
     });
   }, { threshold: 0.08 });
-
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  /* ── Active chip highlight on scroll ── */
+  const chips = document.querySelectorAll('.cat-chip[data-target]');
+  const chipObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        chips.forEach(c => c.classList.toggle('active', c.dataset.target === entry.target.id));
+      }
+    });
+  }, { rootMargin: '-10% 0px -70% 0px', threshold: 0 });
+  ['productos','promos-pan','combos','cumpleanito','contacto'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) chipObserver.observe(el);
+  });
 
   /* ── Back to top visibility ── */
   const backBtn = document.getElementById('back-top');
@@ -1958,10 +2114,11 @@
 
   /* ── Close mobile menu on outside click ── */
   document.addEventListener('click', (e) => {
-    const nav  = document.getElementById('mobile-nav');
-    const btn  = document.getElementById('hamburger');
+    const nav = document.getElementById('mobile-nav');
+    const btn = document.getElementById('hamburger');
     if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
       nav.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
     }
   });
 </script>
