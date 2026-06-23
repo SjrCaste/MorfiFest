@@ -1250,6 +1250,73 @@
     }
 
     /* ══════════════════════════════════════
+       MAYORISTA SECTION
+    ══════════════════════════════════════ */
+    .mayorista-section {
+      background: linear-gradient(135deg, #2a0f04 0%, var(--brown) 60%, #1a0a02 100%);
+      color: #fff;
+    }
+
+    .mayorista-inner {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .mayorista-sub {
+      color: rgba(255,255,255,.82);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 580px;
+      margin: 0 auto 32px;
+    }
+
+    .mayorista-ocasiones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 36px;
+    }
+
+    .ocasion-chip {
+      background: rgba(255,208,0,.12);
+      border: 1.5px solid rgba(255,208,0,.35);
+      color: var(--yellow);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: .82rem;
+      padding: 8px 16px;
+      border-radius: 50px;
+      letter-spacing: .3px;
+    }
+
+    .mayorista-benefits {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .mayorista-benefit {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: .9rem;
+      color: rgba(255,255,255,.88);
+    }
+
+    .benefit-icon { font-size: 1.3rem; }
+
+    .mayorista-wa {
+      font-size: 1.05rem;
+      padding: 16px 32px;
+    }
+
+    /* ══════════════════════════════════════
        RESPONSIVE — TABLET (≤ 900px)
     ══════════════════════════════════════ */
     @media (max-width: 900px) {
@@ -2036,6 +2103,52 @@
           </a>
         </div>
       </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ MAYORISTA ══════════════ -->
+<section id="mayorista" class="section mayorista-section">
+  <div class="container">
+    <div class="mayorista-inner fade-up">
+
+      <div class="section-label" style="background:rgba(255,208,0,.15);border-color:rgba(255,208,0,.4);color:var(--yellow);">🏭 Distribuidora Mayorista</div>
+      <h2 class="section-title" style="color:#fff;">Precios especiales<br>por volumen</h2>
+      <p class="mayorista-sub">
+        Somos distribuidores mayoristas pero también atendemos minoristas. Si organizás un cumpleaños,
+        una fiesta, un evento o simplemente querés stockearte, consultanos y te armamos
+        una cotización a medida con los mejores precios del mercado.
+      </p>
+
+      <div class="mayorista-ocasiones">
+        <span class="ocasion-chip">🎂 Cumpleaños</span>
+        <span class="ocasion-chip">🎉 Fiestas y eventos</span>
+        <span class="ocasion-chip">🏢 Empresas y oficinas</span>
+        <span class="ocasion-chip">🍻 Juntadas y reuniones</span>
+        <span class="ocasion-chip">🏫 Kioscos y buffets</span>
+        <span class="ocasion-chip">📦 Compra mayorista</span>
+      </div>
+
+      <div class="mayorista-benefits">
+        <div class="mayorista-benefit">
+          <span class="benefit-icon">💰</span>
+          <span>Precios especiales por cantidad</span>
+        </div>
+        <div class="mayorista-benefit">
+          <span class="benefit-icon">🤝</span>
+          <span>Atención personalizada</span>
+        </div>
+        <div class="mayorista-benefit">
+          <span class="benefit-icon">⚡</span>
+          <span>Respuesta rápida por WhatsApp</span>
+        </div>
+      </div>
+
+      <a class="btn btn-wa mayorista-wa" href="https://wa.me/549XXXXXXXXXX?text=Hola%20Morfi%20Fest%2C%20quiero%20consultar%20precios%20mayoristas%20para%20mi%20evento." target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Pedir cotización mayorista
+      </a>
 
     </div>
   </div>
