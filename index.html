@@ -481,6 +481,15 @@
       color: var(--text);
     }
 
+    .cat-chip-static { cursor: default; }
+    .cat-chip-static:not(.active):hover {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+      box-shadow: none;
+      transform: none;
+    }
+
     .cat-chip:hover,
     .cat-chip.active {
       background: var(--red);
@@ -776,8 +785,24 @@
       color: var(--white);
     }
 
-    .promo-tab-content { display: none; }
-    .promo-tab-content.active { display: block; }
+    .promo-tab-content { display: block; }
+    .promo-section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      color: var(--red-dark);
+      margin: 36px 0 18px;
+    }
+    .promo-section-label::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: var(--border);
+      border-radius: 2px;
+    }
+    .promo-section-label:first-of-type { margin-top: 0; }
 
     .promo-items-grid {
       display: grid;
@@ -1602,10 +1627,10 @@
 <nav id="cat-nav" aria-label="Categorías">
   <div class="cat-chips">
     <button class="cat-chip cat-chip-mayor" data-target="mayorista"  onclick="goTo('#mayorista')">🏭 Mayorista</button>
-    <button class="cat-chip" data-target="promos-pan"  onclick="goTo('#promos-pan')">🎁 Promos con Pan</button>
-    <button class="cat-chip" data-target="combos"      onclick="goTo('#combos')">📦 Combos</button>
-    <button class="cat-chip" data-target="cumpleanito" onclick="goTo('#cumpleanito')">🎂 Promo Cumple</button>
-    <button class="cat-chip" data-target="productos"   onclick="goTo('#productos')">📋 Precios</button>
+    <button class="cat-chip cat-chip-static" data-target="promos-pan">🎁 Promos con Pan</button>
+    <button class="cat-chip cat-chip-static" data-target="combos">📦 Combos</button>
+    <button class="cat-chip cat-chip-static" data-target="cumpleanito">🎂 Promo Cumple</button>
+    <button class="cat-chip cat-chip-static" data-target="productos">📋 Precios</button>
     <button class="cat-chip" data-target="contacto"    onclick="goTo('#contacto')">💬 Contacto</button>
   </div>
 </nav>
@@ -1667,13 +1692,9 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="promo-tabs">
-      <button class="promo-tab active" onclick="switchPromoTab('hamburguesas-pan')">🍔 Hamburguesas</button>
-      <button class="promo-tab" onclick="switchPromoTab('salchichas-pan')">🌭 Salchichas</button>
-    </div>
-
     <!-- HAMBURGUESAS CON PAN -->
-    <div class="promo-tab-content active fade-up" id="hamburguesas-pan">
+    <div class="promo-section-label">🍔 Hamburguesas con Pan</div>
+    <div class="promo-tab-content fade-up" id="hamburguesas-pan">
       <div class="promo-items-grid">
 
         <div class="promo-card">
@@ -1795,8 +1816,9 @@
       </div>
     </div>
 
-    <!-- SALCHICHAS CON PAN -->
-    <div class="promo-tab-content" id="salchichas-pan">
+    <!-- PANCHOS CON PAN -->
+    <div class="promo-section-label">🌭 Panchos con Pan</div>
+    <div class="promo-tab-content fade-up" id="salchichas-pan">
       <div class="promo-items-grid">
 
         <div class="promo-card">
@@ -2100,11 +2122,11 @@
         <div class="cat-label-line"></div>
       </div>
       <div class="price-table">
-        <div class="price-row"><span class="price-name">Clásicas 70 g</span><span class="price-val">$ 1.800</span></div>
-        <div class="price-row"><span class="price-name">Americano 70 g</span><span class="price-val">$ 1.800</span></div>
-        <div class="price-row"><span class="price-name">Jamón Serrano 70 g</span><span class="price-val">$ 2.300</span></div>
-        <div class="price-row"><span class="price-name">Cheddar 70 g</span><span class="price-val">$ 2.300</span></div>
-        <div class="price-row"><span class="price-name">Clásicas 120 g</span><span class="price-val">$ 2.800</span></div>
+        <div class="price-row"><span class="price-name">Papa Clásicas 70 g</span><span class="price-val">$ 1.800</span></div>
+        <div class="price-row"><span class="price-name">Papa Americana 70 g</span><span class="price-val">$ 1.800</span></div>
+        <div class="price-row"><span class="price-name">Papa Jamón Serrano 70 g</span><span class="price-val">$ 2.300</span></div>
+        <div class="price-row"><span class="price-name">Cheddar</span><span class="price-val">$ 2.300</span></div>
+        <div class="price-row"><span class="price-name">Papa Clásicas 120 g</span><span class="price-val">$ 2.800</span></div>
         <div class="price-row"><span class="price-name">Conitox Queso 60 g</span><span class="price-val">$ 1.950</span></div>
         <div class="price-row"><span class="price-name">Nachitox 100 g</span><span class="price-val">$ 2.100</span></div>
       </div>
@@ -2134,10 +2156,10 @@
         <div class="cat-label-line"></div>
       </div>
       <div class="price-table">
-        <div class="price-row"><span class="price-name">La Defensa 55 g</span><span class="price-val">$ 500</span></div>
-        <div class="price-row"><span class="price-name">La Defensa 110 g</span><span class="price-val">$ 900</span></div>
-        <div class="price-row"><span class="price-name">La Conquista 69 g</span><span class="price-val">$ 700</span></div>
-        <div class="price-row"><span class="price-name">Rancho Alto 83 g</span><span class="price-val">$ 1.400</span></div>
+        <div class="price-row"><span class="price-name">La Defensa 55g · 4u</span><span class="price-val">$ 2.000</span></div>
+        <div class="price-row"><span class="price-name">La Defensa 110g · 4u</span><span class="price-val">$ 3.600</span></div>
+        <div class="price-row"><span class="price-name">La Conquista 69g · 4u</span><span class="price-val">$ 2.800</span></div>
+        <div class="price-row"><span class="price-name">Rancho Alto 83g · 4u</span><span class="price-val">$ 5.600</span></div>
       </div>
     </div>
 
